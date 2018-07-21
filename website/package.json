@@ -1,0 +1,30 @@
+{
+  "name": "timetabletlu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bulma": "^0.7.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zugor/TimeTable-TLU.git"
+  },
+  "keywords": [
+    "timetable"
+  ],
+  "author": "Zugor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zugor/TimeTable-TLU/issues"
+  },
+  "homepage": "https://github.com/Zugor/TimeTable-TLU#readme"
+}
