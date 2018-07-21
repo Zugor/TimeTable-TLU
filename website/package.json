@@ -5,12 +5,16 @@
   "main": "index.js",
   "dependencies": {
     "bulma": "^0.7.1",
+    "history": "^4.7.2",
+    "moment": "^2.22.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "redux-thunk": "^2.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "redux-logger": "^3.0.6"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
