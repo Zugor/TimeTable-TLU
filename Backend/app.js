@@ -20,7 +20,7 @@ app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 
 app.use(function(req,res,next){
-    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:3000');
+    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:80');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -128,7 +128,11 @@ router.get("/getData",function(req,res,next){
         },
         function(callback){
             results.subjects.map((subject,i)=>{
-                let subjectBT = subject.class.match(/([A-Z]\w+)\.((\d)(\.\d)?)_BT/);
+                let subjectClass = subject.class;
+                if(subjectClass.indexOf('(L.CHON)') !== -1)
+                    subjectClass = subjectClass.replace('(L.CHON)','').replace(' ','');
+
+                let subjectBT = subjectClass.match(/([A-Z]\w+)\.((\d)(\.\d)?)_BT/);
                 if(subjectBT){
                     let nameSubjectLT = subjectBT[1]+'.'+subjectBT[3]+'_LT';
                     let indexSubjectLT = results.subjects.findIndex(subject => subject.class.indexOf(nameSubjectLT)!==-1);
@@ -270,7 +274,11 @@ router.post("/getData",function(req,res,next){
         },
         function(callback){
             results.subjects.map((subject,i)=>{
-                let subjectBT = subject.class.match(/([A-Z]\w+)\.((\d)(\.\d)?)_BT/);
+                let subjectClass = subject.class;
+                if(subjectClass.indexOf('(L.CHON)') !== -1)
+                    subjectClass = subjectClass.replace('(L.CHON)','').replace(' ','');
+
+                let subjectBT = subjectClass.match(/([A-Z]\w+)\.((\d)(\.\d)?)_BT/);
                 if(subjectBT){
                     let nameSubjectLT = subjectBT[1]+'.'+subjectBT[3]+'_LT';
                     let indexSubjectLT = results.subjects.findIndex(subject => subject.class.indexOf(nameSubjectLT)!==-1);

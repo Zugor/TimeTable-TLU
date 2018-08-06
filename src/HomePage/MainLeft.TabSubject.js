@@ -18,7 +18,6 @@ class TabSubject extends React.Component{
                 <a className={schoolTimeTableFilter && schoolTimeTableFilter.tab==='daicuong' ? 'is-active' : ''} onClick={this.switchTab.bind(this, 'daicuong')}>đại cương</a>
                 <a className={schoolTimeTableFilter && schoolTimeTableFilter.tab==='theduc' ? 'is-active' : ''} onClick={this.switchTab.bind(this, 'theduc')}>thể dục</a>
                 <a className={schoolTimeTableFilter && schoolTimeTableFilter.tab==='dachon' ? 'is-active' : ''} onClick={this.switchTab.bind(this, 'dachon')}>đã chọn</a>
-                <a className={schoolTimeTableFilter && schoolTimeTableFilter.tab==='ganday' ? 'is-active' : ''} onClick={this.switchTab.bind(this, 'ganday')}>gần đây</a>
             </p>
         )
     }

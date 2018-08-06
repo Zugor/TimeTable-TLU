@@ -50,6 +50,20 @@ export function schoolTimeTable(state={},action){
     
 }
 
+export function time(state={},action){
+
+    switch(action.type){
+        case subjectConstants.PICK_SEMESTER:
+            return {
+                year     : action.year,
+                semester : action.semester
+            }
+        default:
+            return state;
+    }
+    
+}
+
 export function schoolTimeTableFilter(state={},action){
 
     switch(action.type){

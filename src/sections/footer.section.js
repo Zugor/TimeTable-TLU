@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 
 class Footer extends React.Component{
     constructor(props){
@@ -12,7 +11,7 @@ class Footer extends React.Component{
     <div className="container">
         <div className="content has-text-centered">
             <p>
-            Phát triển bởi <a href="https://jgthms.com">Bùi Tuấn Anh</a> - Sinh viên Khoa Toán Tin K28 - Trường đại học Thăng Long
+            Phát triển bởi <a target="_blank" href="https://www.facebook.com/CLB.TinHoc.TLU/">Câu lạc bộ Tin học</a> - trường Đại Học Thăng Long
             </p>
         </div>
     </div>
@@ -20,8 +19,4 @@ class Footer extends React.Component{
         ) 
     }
 }
-function mapStateToProps(state){
-    return state;
-}
-const connectedHeader=connect(mapStateToProps)(Footer);
-export { connectedHeader as Footer } 
+export { Footer } 

@@ -56,7 +56,12 @@ header .navbar-link .tag{
 }
 
 /* Main Right */
-
+.pageloader{
+    opacity: .8;
+}
+.timetable{
+    overflow: auto;
+}
 .timetable table td.class {
     font-size: 12px;
     padding: 0;
@@ -64,9 +69,6 @@ header .navbar-link .tag{
 .timetable table td, table th {
     text-align: center!important;
     vertical-align: middle;
-}
-.timetable{
-    overflow: auto;
 }
 #main-right .message .message-body{
     padding: 0.75em 1em;

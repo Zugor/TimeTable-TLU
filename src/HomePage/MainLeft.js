@@ -8,8 +8,6 @@ class MainLeft extends React.Component{
         super(props);
         this.state = {  subjects    : [],
                         search      : '',
-                        year        : 2018,
-                        semester    : 110,
                         semester_option   : [
                             {id: 110,title: 'Học kỳ I nhóm 1'},
                             {id: 111,  title: 'Học kỳ I nhóm 2'}
@@ -24,35 +22,19 @@ class MainLeft extends React.Component{
         var {dispatch} = this.props;
         var value    = Number(e.target.value);
         var semester = 110;
-        if(value === 2018){
-            this.setState({semester_option  : [
-                {id: 110,  title: 'Học kỳ I nhóm 1'},
-                {id: 111,  title: 'Học kỳ I nhóm 2'},
-            ], semester: semester});
-        }
-        else if(value === 2017){
+        if(value === 2018)
+            semester = 110;
+        else if(value === 2017)
             semester = 101;
-            this.setState({semester_option  : [
-                {id: 101,  title: 'Học kỳ I nhóm 1'},
-                {id: 102,  title: 'Học kỳ I nhóm 2'},
-                {id: 103,  title: 'Học kỳ I nhóm 3'},
-                {id: 104,  title: 'Học kỳ II nhóm 1'},
-                {id: 105,  title: 'Học kỳ II nhóm 2'},
-                {id: 106,  title: 'Học kỳ II nhóm 3'},
-                {id: 107,  title: 'Học kỳ III nhóm 1'},
-                {id: 108,  title: 'Học kỳ III nhóm 2'},
-                {id: 109,  title: 'Học kỳ III nhóm 3'},
-            ], semester: semester});
-        }
+        
+        this.setState({semester: semester});
         dispatch(subjectActions.getSubjectsWithSemester(value, semester));
-        this.setState({year: value});
     }
     handleChangeSemester(e) {
-        var {dispatch} = this.props;
+        var {dispatch, time} = this.props;
         var value    = Number(e.target.value);
-        var year     = this.state.year;
+        var year     = time && time.year ? time.year : 2018;
         dispatch(subjectActions.getSubjectsWithSemester(year, value));
-        this.setState({semester: value});
     }
     componentDidMount(){
         this.props.dispatch(subjectActions.getSubjects());
@@ -65,11 +47,35 @@ class MainLeft extends React.Component{
         this.props.dispatch(subjectActions.resetTickSubjects());
     }
     render(){
+        var {time} = this.props;
+        var _data =  {
+                        year        : time.year     ? time.year     : 2018,
+                        semester    : time.semester ? time.semester : 110,
+                    }
+        if(_data.year === 2018){
+            _data['semester_option']  = [
+                {id: 110,  title: 'Học kỳ I nhóm 1'},
+                {id: 111,  title: 'Học kỳ I nhóm 2'},
+            ];
+        }
+        else if(_data.year === 2017){
+            _data['semester_option']  = [
+                {id: 101,  title: 'Học kỳ I nhóm 1'},
+                {id: 102,  title: 'Học kỳ I nhóm 2'},
+                {id: 103,  title: 'Học kỳ I nhóm 3'},
+                {id: 104,  title: 'Học kỳ II nhóm 1'},
+                {id: 105,  title: 'Học kỳ II nhóm 2'},
+                {id: 106,  title: 'Học kỳ II nhóm 3'},
+                {id: 107,  title: 'Học kỳ III nhóm 1'},
+                {id: 108,  title: 'Học kỳ III nhóm 2'},
+                {id: 109,  title: 'Học kỳ III nhóm 3'},
+            ];
+        }
         return (<div>
         <div className="field">
             <p className="control">
                 <span className="select is-fullwidth">
-                    <select value={this.state.year} onChange={this.handleChangeYear}>
+                    <select value={_data.year} onChange={this.handleChangeYear}>
                         <option value="2018">Năm học 2018 - 2019</option>
                         <option value="2017">Năm học 2017 - 2018</option>
                     </select>
@@ -80,8 +86,8 @@ class MainLeft extends React.Component{
         <div className="field">
             <p className="control">
                 <span className="select is-fullwidth">
-                    <select value={this.state.semester} onChange={this.handleChangeSemester}>
-                    {this.state.semester_option.map((s,i)=>{
+                    <select value={_data.semester} onChange={this.handleChangeSemester}>
+                    {_data.semester_option.map((s,i)=>{
                             return (
                             <option value={s.id} key={i}>{s.title}</option>
                             )  
@@ -116,8 +122,8 @@ class MainLeft extends React.Component{
     }
 }
 function mapStateToProps(state){
-    const { schoolTimeTable,schoolTimeTableFilter } = state;
-    return { schoolTimeTable,schoolTimeTableFilter };
+    const { schoolTimeTable,schoolTimeTableFilter,time } = state;
+    return { schoolTimeTable,schoolTimeTableFilter,time };
 }
 const connectedMainLeft=connect(mapStateToProps)(MainLeft);
 export { connectedMainLeft as MainLeft } 

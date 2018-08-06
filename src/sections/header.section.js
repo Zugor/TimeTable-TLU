@@ -7,37 +7,64 @@ class Header extends React.Component{
         super(props);
      
     }
+    componentDidMount(){
+      document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+      
+          // Add a click event on each of them
+          $navbarBurgers.forEach( el => {
+            el.addEventListener('click', () => {
+      
+              // Get the target from the "data-target" attribute
+              const target = el.dataset.target;
+              const $target = document.getElementById(target);
+      
+              // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+              el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+      
+            });
+          });
+        }
+      
+      });
+    }
     render(){
        return (
 <header>
   <nav className="navbar is-transparent">
     <div className="navbar-brand">
-      <a className="navbar-item" href="https://bulma.io">
-        <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28"/>
+      <a className="navbar-item" href="/">
+        <img src="/img/icon.png" alt="ThangLong Information Technology Club" width="32" height="32"/>
       </a>
-      <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
+      <div className="navbar-burger burger" data-target="navbarTransparent">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
 
-    <div id="navbarExampleTransparentExample" className="navbar-menu">
+    <div id="navbarTransparent" className="navbar-menu">
       <div className="navbar-start">
-        <a className="navbar-item" href="https://bulma.io/">
+        <a className="navbar-item" href="/">
           Xếp thời khóa biểu
         </a>
         <div className="navbar-item has-dropdown is-hoverable">
-          <a className="navbar-link" href="/documentation/overview/start/">
+          <a className="navbar-link" href="#">
             Đăng ký học 
             <span className="tag is-danger">vip</span>
           </a>
           <div className="navbar-dropdown is-boxed">
-            <a className="navbar-item" href="/documentation/overview/start/">
+            <a className="navbar-item" href="#">
               Tự động đăng ký học
             </a>
             <hr className="navbar-divider"/>
-            <a className="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
+            <a className="navbar-item" href="#">
               Xem danh sách lớp
             </a>
           </div>
@@ -45,28 +72,21 @@ class Header extends React.Component{
       </div>
 
       <div className="navbar-end">
-        <div className="navbar-item">
-          <div className="field is-grouped">
-            <p className="control">
-              <a className="bd-tw-button button" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=http://localhost:4000&amp;via=jgthms">
-                <span className="icon">
-                  <i className="fab fa-facebook"></i>
-                </span>
-                <span>
-                  Facebook
-                </span>
-              </a>
-            </p>
-            <p className="control">
-              <a className="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.7.1/bulma-0.7.1.zip">
-                <span className="icon">
-                  <i className="fas fa-donate"></i>
-                </span>
-                <span>Đóng góp</span>
-              </a>
-            </p>
-          </div>
-        </div>
+        <a className="navbar-item" target="_blank" href="https://www.facebook.com/CLB.TinHoc.TLU/">
+          <span className="icon has-text-link">
+            <i className="fab fa-facebook"></i>
+          </span>
+          <span>
+            Facebook
+          </span>
+        </a>
+        
+        <a className="navbar-item" target="_blank" href="https://www.messenger.com/t/zugor81">
+          <span className="icon has-text-warning">
+            <i className="fas fa-donate"></i>
+          </span>
+          <span>Đóng góp</span>
+        </a>
       </div>
     </div>
   </nav>

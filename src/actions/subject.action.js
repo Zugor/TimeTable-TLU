@@ -9,6 +9,8 @@ export const subjectActions={
     resetTickSubjects,
     tickCheckBoxSubject,
     messageTimeTable,
+    onlyTickSubject,
+    onlyUpdateTimeTable,
 }
 function getSubjects(){
     return dispatch=>{
@@ -31,6 +33,7 @@ function getSubjectsWithSemester(year, semester){
                 subjects   =>  dispatch(success(subjects)),
                 error   =>  dispatch(failure(error))
         )
+        dispatch(pickSemester(year, semester));
         dispatch(resetFilterSubjects());
         dispatch(resetTimeTable());
     }
@@ -39,6 +42,7 @@ function getSubjectsWithSemester(year, semester){
     function failure(error) { return { type: subjectConstants.GET_SUBJECTS_WITH_SEMESTER_FAILURE, error }}
     function resetFilterSubjects() { return { type: subjectConstants.RESET_FILTER_SUBJECT }}
     function resetTimeTable() { return { type: subjectConstants.RESET_TIMETABLE }}
+    function pickSemester(year, semester) { return { type: subjectConstants.PICK_SEMESTER, year, semester}}
 }
 function filterSubjects(tab, subjects){
     return dispatch=>{
@@ -56,10 +60,8 @@ function filterSubjects(tab, subjects){
                     return subject.checked === 1;
                 });
                 break;
-            case 'ganday':
-
-                break;
             default:
+                break;
         }
         return { type: subjectConstants.FILTER_SUBJECT, tab, subjects }
     };
@@ -88,6 +90,23 @@ function tickCheckBoxSubject(no, classes){
         return { type: subjectConstants.UPDATE_TIMETABLE, classes }
     }
 }
+function onlyTickSubject(no){
+    return dispatch=>{
+        dispatch(request(no));
+    }
+    function request(no) {
+        return { type: subjectConstants.TICK_CHECKBOX_SUBJECT, no }
+    }
+}
+function onlyUpdateTimeTable(classes){
+    return dispatch=>{
+        dispatch(request(classes));
+    }
+    function request(classes) {
+        return { type: subjectConstants.UPDATE_TIMETABLE, classes }
+    }
+}
+
 function messageTimeTable(message){
     return dispatch=>{
         dispatch(request(message));
