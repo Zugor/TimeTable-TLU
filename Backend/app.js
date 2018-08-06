@@ -20,7 +20,7 @@ app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 
 app.use(function(req,res,next){
-    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:80');
+    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:8080');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
