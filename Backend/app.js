@@ -20,7 +20,7 @@ app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 
 app.use(function(req,res,next){
-    //res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:8080');
+    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:3000');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -334,5 +334,5 @@ app.use(function(req, res, next){
 });
 
 if(!module.parent){
-    app.listen(8080, '0.0.0.0');
+  app.listen(3001, () => console.log('Example app listening on port 3001!'));
 }
