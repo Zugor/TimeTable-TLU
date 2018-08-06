@@ -23,7 +23,7 @@
     "redux-logger": "^3.0.6"
   },
   "scripts": {
-    "start": "parallelshell \"nodemon Backend/app\" \"set PORT=8080 && react-scripts start\"",
+    "start": "parallelshell \"node Backend/app\" \"set PORT=8080 && react-scripts start\"",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "react-scripts test"
