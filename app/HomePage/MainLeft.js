@@ -9,7 +9,7 @@ class MainLeft extends React.Component{
         this.state = {  subjects    : [],
                         search      : '',
                         semester_option   : [
-                            {id: 110,title: 'Học kỳ I nhóm 1'},
+                            {id: 110,  title: 'Học kỳ I nhóm 1'},
                             {id: 111,  title: 'Học kỳ I nhóm 2'}
                         ]
                     };
@@ -50,7 +50,7 @@ class MainLeft extends React.Component{
         var {time} = this.props;
         var _data =  {
                         year        : time.year     ? time.year     : 2018,
-                        semester    : time.semester ? time.semester : 110,
+                        semester    : time.semester ? time.semester : 111,
                     }
         if(_data.year === 2018){
             _data['semester_option']  = [
