@@ -45,6 +45,8 @@
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
+    "start": "node app",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
