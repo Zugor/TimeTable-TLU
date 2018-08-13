@@ -62,7 +62,9 @@ class ListClass extends React.Component{
         if(search){
             search   = KhongDau(search).toLowerCase();
             subjects = subjects.filter(function(subject) {
-                return KhongDau(subject.name).toLowerCase().indexOf(search) !== -1 || KhongDau(subject.class).toLowerCase().indexOf(search) !== -1;
+                return KhongDau(subject.name).toLowerCase().indexOf(search) !== -1 
+                || KhongDau(subject.class).toLowerCase().indexOf(search) !== -1
+                || subject.id.toLowerCase().indexOf(search) !== -1;
             });      
         }
 
