@@ -317,6 +317,7 @@ app.use(function(req, res, next){
     res.status(404).render('index');
 });
 
+const PORT = process.env.PORT || 80;
 if(!module.parent){
-  app.listen(80, () => console.log('Server started'));
+  app.listen(PORT, () => console.log('Server started'));
 }
