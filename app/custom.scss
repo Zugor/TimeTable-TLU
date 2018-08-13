@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+header, footer{
+    margin-bottom: 0;
+}
+@media screen and (min-width: 1024px){
+    header{
+        margin-bottom: 30px;
+    }
+    footer{
+        margin-top: 30px;
+    }
+    .timetable table {
+        table-layout: fixed;
+    }
+    .timetable{
+        overflow: visible!important;
+    }
+}
+
+header .navbar-link .tag{
+    padding: 2px;
+    height: 1.5em;
+    font-size: 10px;
+    margin-top: -10px;
+    margin-left: 2px;
+}
+/* Main Left */
+.panel-subjects{
+    max-height: 300px;
+    overflow: auto;
+    position: relative;
+}
+.panel-subjects .panel-block{
+    justify-content: space-between;
+}
+.panel-subjects .panel-block:first-child{
+    border-top: none;
+}
+.panel-subjects .panel-block label{
+    margin: 0;
+    padding-top: 0;
+}
+.panel-subjects .panel-block .tag{
+    margin-bottom: 0;
+}
+.panel-subjects .panel-block .panel-title{
+    max-width: 65%;
+}
+.panel-subjects .panel-block .panel-title .subject-name, .panel-subjects .panel-block:hover .panel-title .class-name{
+    display: none;
+}
+.panel-subjects .panel-block:hover .panel-title .subject-name{
+    display: block;
+}
+.panel-subjects .panel-block .panel-addons .tags{
+    border-radius: 0px;
+}
+
+/* Main Right */
+.pageloader{
+    opacity: .8;
+}
+.timetable{
+    overflow: auto;
+}
+.timetable table td.class {
+    font-size: 12px;
+    padding: 0;
+}
+.timetable table td, table th {
+    text-align: center!important;
+    vertical-align: middle;
+}
+#main-right .message .message-body{
+    padding: 0.75em 1em;
+}
+#main-right .extra-info{
+    margin-top: 20px;
+}
+
+@import "~bulma/bulma";
